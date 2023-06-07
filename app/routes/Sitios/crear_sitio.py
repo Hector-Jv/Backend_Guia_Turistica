@@ -26,13 +26,20 @@ class AgregarSitio(MethodView):
             costo = request.form["costo"]
             pagina_web = request.form["pagina_web"]
             telefono = request.form["telefono"]
+            print("B1")
+            
             adscripcion = request.form["adscripcion"]
+            print("B2")
+            
             cve_tipo_sitio = int(request.form["cve_tipo_sitio"]) 
+            print("B3")
             cve_delegacion = int(request.form["cve_delegacion"])
+            print("B4")
+            
             colonia = request.form["colonia"]
             # Modelo SitioEtiqueta #
             arreglo_etiquetas = request.form["etiquetas"] # arreglo diccionarios
-            print("B")
+            print("B5")
             
             # Modelo Horario
             # arr_horario = request.form["horarios"] # arreglo de diccionarios
