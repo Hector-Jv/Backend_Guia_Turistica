@@ -2,7 +2,7 @@ from app import db
 from datetime import datetime
 
 class Historial(db.Model):
-    cve_historial = db.Column(db.Integer, autoincrement=True, nullable=False)
+    cve_historial = db.Column(db.Integer, primary_key=True)
     me_gusta = db.Column(db.Boolean, default=False)
     fecha_visita = db.Column(db.DateTime, nullable=False)
     correo_usuario = db.Column(db.String(100), db.ForeignKey('usuario.correo_usuario'), nullable=False)

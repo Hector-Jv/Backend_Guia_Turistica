@@ -1,7 +1,7 @@
 from app import db
 
 class Colonia(db.Model):
-    cve_colonia = db.Column(db.Integer, nullable=False)
+    cve_colonia = db.Column(db.Integer, primary_key=True)
     nombre_colonia = db.Column(db.String(100), nullable=False)
     cve_delegacion = db.Column(db.Integer, nullable=False)
     
