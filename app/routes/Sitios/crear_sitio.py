@@ -12,6 +12,9 @@ crear_sitio_bp = Blueprint('crear_sitio', __name__)
 class AgregarSitio(MethodView):
     
     def post(self):
+        
+        print("A")
+        
         # Datos ingresados #
         try:
             # Modelo Sitio
@@ -29,6 +32,7 @@ class AgregarSitio(MethodView):
             colonia = request.form["colonia"]
             # Modelo SitioEtiqueta #
             arreglo_etiquetas = request.form["etiquetas"] # arreglo diccionarios
+            print("B")
             
             # Modelo Horario
             # arr_horario = request.form["horarios"] # arreglo de diccionarios
@@ -41,6 +45,7 @@ class AgregarSitio(MethodView):
         latitud = float(latitud)
         costo = float(costo) if costo else 0
         
+        print("C")
         
         # Validaciones #
         if Sitio.query.filter_by(nombre_sitio=nombre_sitio, longitud=longitud, latitud=latitud).first():
@@ -51,6 +56,7 @@ class AgregarSitio(MethodView):
         }
         
         obtener_tipo_sitio = TipoSitio.query.get(cve_tipo_sitio)
+        print("D")
         
         if obtener_tipo_sitio.tipo_sitio == "Hotel":
             calificacion_sitio["calificaciones_especificas"] = {
@@ -67,6 +73,7 @@ class AgregarSitio(MethodView):
             }    
         
         obtener_colonia = Colonia.query.filter_by(nombre_colonia=colonia).first()
+        print("E")
         
         try:
             # Insertar colonia
@@ -78,6 +85,7 @@ class AgregarSitio(MethodView):
                 db.session.add(crear_colonia)
                 db.session.flush()
                 obtener_colonia = crear_colonia
+            print("F")
 
             # Insertar sitio
             nuevo_sitio = Sitio(
@@ -98,6 +106,7 @@ class AgregarSitio(MethodView):
             )
             db.session.add(nuevo_sitio)
             db.session.flush()
+            print("G")
 
             """
             # Insertar horarios
@@ -118,6 +127,7 @@ class AgregarSitio(MethodView):
                         cve_etiqueta
                     )
                     db.session.add(nueva_relacion)
+            print("H")
             
             # Insertar imagenes
             fotos = request.files.getlist('fotos_sitio')
@@ -140,13 +150,19 @@ class AgregarSitio(MethodView):
                         nombre_autor='x'
                     )
                     db.session.add(foto_sitio)
-            
+            print("I")
+
             # Si todo ha salido bien, confirmamos los cambios
             db.session.commit()
+            print("J")
 
         except Exception as e:
             # Si ha habido algún error, deshacemos los cambios
             db.session.rollback()
+            print("K")
+            
             abort(400, message="Hubo un error: " + str(e))
         finally:
+            print("L")
+            
             return {"mensaje": "Sitio creado con éxito."}
