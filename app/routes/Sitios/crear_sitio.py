@@ -6,9 +6,9 @@ from flask_smorest import Blueprint, abort, fields
 from marshmallow import Schema, fields
 import cloudinary.uploader
 
-agregar_sitio_bp = Blueprint('agregar_sitio', __name__)
+crear_sitio_bp = Blueprint('crear_sitio', __name__)
 
-@agregar_sitio_bp.route('/agregar_sitio')
+@crear_sitio_bp.route('/crear_sitio')
 class AgregarSitio(MethodView):
     
     def post(self):
