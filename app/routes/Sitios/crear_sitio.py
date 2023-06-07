@@ -148,5 +148,5 @@ class AgregarSitio(MethodView):
             # Si ha habido algún error, deshacemos los cambios
             db.session.rollback()
             abort(400, message="Hubo un error: " + str(e))
-
-        return jsonify({"mensaje": "Sitio creado con éxito"}), 201
+        finally:
+            return {"mensaje": "Sitio creado con éxito."}
