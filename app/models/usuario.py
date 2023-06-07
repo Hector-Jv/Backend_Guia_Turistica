@@ -16,7 +16,7 @@ class Usuario(db.Model, UserMixin):
         self.usuario = usuario
         self.contrasena = contrasena
         self.link_imagen = link_imagen
-        self.cve_tipo_usuario = 1
+        self.cve_tipo_usuario = 2
         self.habilitado = True
         
     @property

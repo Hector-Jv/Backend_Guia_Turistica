@@ -8,6 +8,7 @@ from app import db
 from app.models import Usuario, TipoUsuario
 import cloudinary.uploader
 
+"""
 class RegistroUsuarioSchema(Schema):
     correo = fields.String(required=True, description="Correo del usuario.")
     usuario = fields.String(required=True, description="Nombre del usuario.")
@@ -19,7 +20,7 @@ class RegistroUsuarioResponseSchema(Schema):
     usuario = fields.String(description="Nombre del usuario.")
     tipo_usuario = fields.String(description="Tipo de usuario.")
     link_imagen = fields.String(description="Link de la foto del usuario.")
-
+"""
 
 registrar_usuario_bp = Blueprint('Registrar usuario', __name__, description="""Registro de usuario. 
 
@@ -30,9 +31,11 @@ registrar_usuario_bp = Blueprint('Registrar usuario', __name__, description="""R
 @registrar_usuario_bp.route('/registro')
 class Registro(MethodView):
     
+    """
     @registrar_usuario_bp.arguments(RegistroUsuarioSchema, location='form')
     @registrar_usuario_bp.response(200, RegistroUsuarioResponseSchema)
     @registrar_usuario_bp.response(400, description="Sintaxis inválida.")
+    """
     def post(self):
         ## DATOS ##
         correo = request.form['correo']

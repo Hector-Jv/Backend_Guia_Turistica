@@ -5,7 +5,7 @@ from flask_smorest import Blueprint, abort, fields
 from marshmallow import Schema, fields
 from app.models import Usuario, TipoUsuario
 
-
+"""
 class LoginSchema(Schema):
     correo = fields.String(required=True, description="Correo del usuario.")
     contrasena = fields.String(required=True, description="Contraseña del usuario.")
@@ -15,17 +15,21 @@ class LoginResponseSchema(Schema):
     usuario = fields.String(description="Nombre del usuario.")
     tipo_usuario = fields.String(description="Tipo del usuario.")
     link_imagen = fields.String(description="Link de la imagen del usuario.")
+"""
 
 iniciar_sesion_bp = Blueprint('Iniciar sesion', __name__, description="Inicio de sesión de usuario registrado y administrador.")
 
 @iniciar_sesion_bp.route('/login')
 class Login(MethodView):
     
+    """
     @iniciar_sesion_bp.arguments(LoginSchema, location='json')
     @iniciar_sesion_bp.response(200, LoginResponseSchema, description="Inicio de sesión exitoso.")
     @iniciar_sesion_bp.response(400, description="Correo y/o contraseña faltantes o acceso no autorizado.")
     @iniciar_sesion_bp.response(404, description="El correo no se encuentra registrado.")
     @iniciar_sesion_bp.response(401, description="Contraseña incorrecta.")
+    """
+    
     def post(self):
         
         ## Datos recibidos del usuario ##
